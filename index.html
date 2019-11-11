@@ -8,14 +8,31 @@
       margin: 0;
     }
     .preview {
-      height:200px;
+      height: 200px;
       width: 200px;
+      margin: 20px;
+      border-radius: 4px;
+      overflow: hidden;
     }
   </style>
+  <script src="./js/z-list.js"></script>
 </head>
 
 <body>
-  <iframe class="preview" src="./sketch.html" frameborder="0"></iframe>
+  <div class="sketch-container"></div>
+  <script>
+    (function () {
+      var list = sketchList();
+      var container = document.querySelector('.sketch-container');
+      for (scriptUrl of list) {
+        var preview = document.createElement('iframe');
+        preview.setAttribute('class', 'preview');
+        preview.setAttribute('src', './sketch.html?url=' + scriptUrl);
+        preview.setAttribute('frameborder', "0");
+        container.appendChild(preview);
+      }
+    })();
+  </script>
 </body>
 
 </html>
