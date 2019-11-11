@@ -11,21 +11,24 @@
     }
   </style>
 </head>
+
 <body>
   <script>
-    function getQueryVariable(variable) {
-      var query = window.location.search.substring(1);
-      var vars = query.split("&");
-      for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
-        if (pair[0] == variable) { return pair[1]; }
+    (function () {
+      function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split("=");
+          if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
       }
-      return (false);
-    }
-    var jsName = getQueryVariable('url');
-    var scriptTag = document.createElement('script');
-    scriptTag.setAttribute('src', './js/' + jsName + '.js');
-    document.querySelector('body').appendChild(scriptTag);
+      var jsName = getQueryVariable('url');
+      var scriptTag = document.createElement('script');
+      scriptTag.setAttribute('src', './js/' + jsName + '.js');
+      document.querySelector('body').appendChild(scriptTag);
+    })()
   </script>
 </body>
 
